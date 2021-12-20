@@ -1,0 +1,194 @@
+{}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+#container{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.445);
+    overflow: hidden;
+}
+
+#sky{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(./images/sky.png);
+    z-index: -5;
+}
+
+#cloud{
+    z-index: -4;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(./images/cloud_sprite.png);
+    animation: cloud-move 60s linear infinite;
+}
+
+@keyframes cloud-move {
+        0%{
+            background-position: 0px;
+        }
+        100%{
+            background-position: 7680px;
+        }
+}
+
+#rock2{
+    z-index: -3;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: url(./images/rock2.png);
+    animation: rock-move 20s linear infinite;
+}
+
+#rock1{
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(./images/rock1.png);
+    animation: rock-move 20s linear infinite;
+}
+
+@keyframes rock-move {
+    0%{
+        background-position: 3840px;
+        transform: translateY(0px);
+    }
+    50%{
+        transform: translateY(50px);
+    }
+    100%{
+        background-position: 0px;
+        transform: translateY(0px);
+    }
+}
+
+#container::before {
+    content: '';
+    position: absolute;
+    Width: 100%;
+    height: 100%;
+    opacity: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.507), rgba(0, 0, 0, 0.486));
+    animation: background-animation 30s linear alternate infinite;
+    z-index: -3;
+}
+
+@keyframes background-animation {
+    0% {
+        opacity: 0;
+    }
+    47% {
+        opacity: 0;
+    }
+    53% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#character-box{
+    height: 256px;
+    width: 256px;
+    position: absolute;
+    left: 100px;
+    bottom: 50px;
+}
+
+#character{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: url(./images/character.png);
+    animation: character-animation 1s steps(6) infinite; 
+}
+
+@keyframes character-animation {
+    0%{
+        background-position: 1536px;
+    }    
+}
+
+#block{
+    width: 100px;
+    height: 100px;
+    background-color: rgb(0, 149, 255);
+    border: 2px solid black;
+    position: absolute;
+    bottom: 50px;
+    left: 900px;
+    animation: block-move 1.5s linear forwards infinite;
+}
+
+@keyframes block-move {
+    0%{
+        left: 1300px;
+    }
+    100%{
+        left: -200px;
+    }
+}
+
+#road{
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(#db1717, #440707);
+    position: absolute;
+    bottom: 0;
+}
+
+.jump{
+    animation: character-jump 0.7s linear;
+}
+
+@keyframes character-jump {
+    0%{
+        bottom: 50px;
+    }
+    30%{
+        bottom: 300px;
+    }
+    70%{
+        bottom: 300px;
+    }
+    100%{
+        bottom: 50px;
+    }
+}
+
+#scoreBox {
+    font-size: 30px;
+    font-family: cursive;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 30px 0px;
+    color: black;
+    font-weight: bold;
+}
+
+#score {
+    width: 150px;
+    text-align: left;
+    margin-left: 5px;
+    font-size: 25px;
+    margin-top: 1px;
+}
+span {
+    z-index: 3;
+}
